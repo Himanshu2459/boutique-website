@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle Film Grain */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+  opacity: 0.03;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  background: #000000;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Dimmer overlay to ensure crisp white text pops */
+.canvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.scroll-content {
+  position: relative;
+  z-index: 10;
+}
+
+.section {
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.text-reveal {
+  font-family: 'Inter', sans-serif;
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.sub-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #D4B483;
+  margin-bottom: 2rem;
+}
+
+.detail-text {
+  max-width: 600px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #a0a0a0;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+/* Minimal Navbar */
+.minimal-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.minimal-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.nav-actions a {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.nav-actions a:hover {
+  color: #D4B483;
+}
+
+/* Footer Section */
+.footer-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  z-index: 20;
+  position: relative;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #ffffff;
+  color: #000000;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 3rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.footer-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  .minimal-nav {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .minimal-logo {
+    font-size: 1rem;
+  }
+
+  .section {
+    height: 100vh;
+    padding: 0 1.2rem;
+    justify-content: flex-end;
+    padding-bottom: 10vh;
+  }
+
+  .text-reveal {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
+
+  .sub-text {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.8rem;
+  }
+
+  .detail-text {
+    font-size: 0.88rem;
+    padding: 0 0.5rem;
+    line-height: 1.6;
+  }
+
+  .footer-section {
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .footer-btn {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+}
